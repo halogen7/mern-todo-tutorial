@@ -1,10 +1,10 @@
 import React from "react";
-
-interface InputProps {
+import "./newtodo.css";
+interface NewTodoProps {
   getTodos: () => void;
 }
 
-const Input = (props: InputProps) => {
+const NewTodo = (props: NewTodoProps) => {
   const [action, setAction] = React.useState("");
 
   const handleAddTodo = () => {
@@ -26,7 +26,7 @@ const Input = (props: InputProps) => {
         })
         .catch((err) => console.log(err));
     } else {
-      console.warn("Input field required");
+      console.warn("NewTodo field required");
     }
   };
 
@@ -35,11 +35,11 @@ const Input = (props: InputProps) => {
   };
 
   return (
-    <div>
+    <div className={"new_todo"}>
       <input type="text" onChange={handleChange} value={action} />
       <button onClick={handleAddTodo}> Add new To-Do </button>
     </div>
   );
 };
 
-export default Input;
+export default NewTodo;
