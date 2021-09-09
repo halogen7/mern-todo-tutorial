@@ -9,12 +9,34 @@
   border-radius: 8px;
 
   font-size: 24px;
-  line-height: 35px;
+  line-height: 24px;
 
   margin-bottom: 36px;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.todo_list {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+
+  height: 80%;
+}
+
+.delete_icon {
+  padding-right: 20px;
+  color: rgba(198, 130, 130, 1);
+}
+
+.check_icon {
+  color: rgba(0, 0, 0, 0.5);
+  padding-left: 20px;
+}
+
+.completed_icon {
+  color: rgba(79, 209, 74, 1);
+  padding-left: 20px;
 }
