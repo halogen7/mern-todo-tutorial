@@ -4,11 +4,13 @@ interface NewTodoProps {
   getTodos: () => void;
 }
 
+//const MAX_CHARACTERS = 100;
+
 const NewTodo = (props: NewTodoProps) => {
   const [action, setAction] = React.useState("");
 
   const handleAddTodo = () => {
-    const task = { action };
+    const task = { action, completed: false };
     if (task.action && task.action.length > 0) {
       fetch("http://localhost:27017/api/todos", {
         method: "POST",
@@ -26,18 +28,26 @@ const NewTodo = (props: NewTodoProps) => {
         })
         .catch((err) => console.log(err));
     } else {
-      console.warn("NewTodo field required");
+      console.warn("Todo field required");
     }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
     setAction(event.target.value);
   };
 
   return (
     <div className={"new_todo"}>
-      <input type="text" onChange={handleChange} value={action} />
-      <button onClick={handleAddTodo}> Add new To-Do </button>
+      <form>
+        <input
+          type="text"
+          onChange={handleChange}
+          value={action}
+          autoFocus={true}
+        />
+        <button onClick={handleAddTodo}>Add</button>
+      </form>
     </div>
   );
 };
